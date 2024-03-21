@@ -10,12 +10,12 @@ These are the code files from the [DevSecOps course](https://kodekloud.com/cours
 
 ### NodeJS Microservice - Docker Image -
 
-`docker run -p 8787:5000 siddharth67/node-service:v1`
+`docker run -p 8787:5000 lsramanjaneyulu/node-service:v1`
 
 `curl localhost:8787/plusone/99`
  
 ### NodeJS Microservice - Kubernetes Deployment -
-`kubectl create deploy node-app --image siddharth67/node-service:v1`
+`kubectl create deploy node-app --image lsramanjaneyulu/node-service:v1`
 
 `kubectl expose deploy node-app --name node-service --port 5000 --type ClusterIP`
 
