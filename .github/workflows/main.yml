@@ -14,9 +14,8 @@ jobs:
 
     - name: check Kubernetes version
       run: |
-        echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > $HOME/.kube/config
-        kubectl version
+        sudo kubectl version
 
     - name: check docker version
       run: |
-        docker version
+        sudo docker version
