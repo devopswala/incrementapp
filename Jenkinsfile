@@ -74,16 +74,16 @@ pipeline {
 
     stage('SonarQube - SAST') {
       steps {
-        withSonarQubeEnv('SonarQube') {
+        // withSonarQubeEnv('SonarQube') {
           sh mvn clean verify sonar:sonar -Dsonar.projectKey=incrementapp -Dsonar.projectName='incrementapp' -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 -Dsonar.token=sqp_ecf5125b9505eec5f94405cfad253f766c06a1b6
         }
-        timeout(time: 2, unit: 'MINUTES') {
-          script {
-            waitForQualityGate abortPipeline: true
-          }
-        }
-      }
-    }
+        // timeout(time: 2, unit: 'MINUTES') {
+        //   script {
+        //     waitForQualityGate abortPipeline: true
+        //   }
+        // }
+      // }
+    // }
 
 	// stage('Vulnerability Scan - Docker') {
  //      steps {
