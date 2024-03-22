@@ -5,14 +5,14 @@ pipeline {
 
     stage('Build Artifact - Maven') {
       steps {
-        sh "mvn clean package -DskipTests=true"
+        sh "MAVEN_OPTS='--add-opens java.base/java.lang=ALL-UNNAMED' mvn clean package -DskipTests=true"
         archive 'target/*.jar'
       }
     }
 
     stage('Unit Tests - JUnit and JaCoCo') {
       steps {
-        sh "mvn test"
+        sh "MAVEN_OPTS='--add-opens java.base/java.lang=ALL-UNNAMED' mvn test"
       }
       post {
         always {
@@ -24,7 +24,7 @@ pipeline {
 
     stage('Mutation Tests - PIT') {
       steps {
-        sh "mvn org.pitest:pitest-maven:mutationCoverage"
+        sh "MAVEN_OPTS='--add-opens java.base/java.lang=ALL-UNNAMED' mvn org.pitest:pitest-maven:mutationCoverage"
       }
       post {
          always {
@@ -35,7 +35,7 @@ pipeline {
 
     stage('SonarQube - SAST') {
       steps {
-         sh "mvn sonar:sonar -Dsonar.projectKey=incrementapp -Dsonar.projectName='incrementapp' \
+         sh "MAVEN_OPTS='--add-opens java.base/java.lang=ALL-UNNAMED' mvn sonar:sonar -Dsonar.projectKey=incrementapp -Dsonar.projectName='incrementapp' \
          -Dsonar.host.url='http://knowledgeacademy.eastus.cloudapp.azure.com:9000' \
          -Dsonar.token=sqp_ecf5125b9505eec5f94405cfad253f766c06a1b6"
 }
