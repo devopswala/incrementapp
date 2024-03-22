@@ -12,12 +12,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: check Kubernetes version
-      run: |
-        cat ~/.kube/config | base64
-        echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > $HOME/.kube/config
-        sudo kubectl version
-
     - name: check docker version
       run: |
-        sudo docker version
+           docker --version
+           
+    - name: check git version
+      run: |
+           git --version       
