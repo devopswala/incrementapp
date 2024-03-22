@@ -14,7 +14,7 @@ jobs:
 
     - name: check Kubernetes version
       run: |
-        sudo echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > /root/.kube/config
+        sudo echo "${{ secrets.KUBECONFIG_BASE64 }}" | base64 -d > $HOME/.kube/config
         sudo kubectl version
 
     - name: check docker version
