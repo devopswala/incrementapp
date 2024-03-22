@@ -235,25 +235,25 @@ pipeline {
  //      }
  //    }   
    
-      stage('Testing Slack - 1') {
-      steps {
-          sh 'exit 0'
-      }
-    }
+  //     stage('Testing Slack - 1') {
+  //     steps {
+  //         sh 'exit 0'
+  //     }
+  //   }
 
-   stage('Testing Slack - Error Stage') {
-      steps {
-          sh 'exit 0'
-      }
-    }
+  //  stage('Testing Slack - Error Stage') {
+  //     steps {
+  //         sh 'exit 0'
+  //     }
+  //   }
 
-  }
+  // }
 
-  // post { 
-     //    always { 
-     //      junit 'target/surefire-reports/*.xml'
-     //      jacoco execPattern: 'target/jacoco.exec'
-     //      pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+   post { 
+        always { 
+          junit 'target/surefire-reports/*.xml'
+          jacoco execPattern: 'target/jacoco.exec'
+          pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
      //      dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
      //      publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'OWASP ZAP HTML Report', reportTitles: 'OWASP ZAP HTML Report'])
         
@@ -279,6 +279,6 @@ pipeline {
 		   //    sendNotification currentBuild.result
 		   //  }	
 	    // }
-    // }
+     }
 
 }
